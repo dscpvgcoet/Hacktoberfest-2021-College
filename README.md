@@ -26,6 +26,8 @@ This repository will have only 4 folders at the root level : FE, SE, TE and BE. 
 
 For example, the TE folder can contain a folder called CNT, which stands for Computer Networks, that is studied by IT students. 
 
+If there isn't a folder for the subject you want to contribute in, you can create the folder. Folder name must be in all caps, and must be short form of subject. For example, folder name of  `DataStructureandAlgorithms` or `HumanComputerInteraction` will not be accepted, but `DSA` or `HCI` will be.
+
 #### 2.  Validity of your code
 
 The code that you submit MUST be valid, with no errors, must pass all corner cases as specified by the University syllabus or your teachers, and must be adequately commented. Submissions without appropriate comments will NOT be accepted. The first few lines of program file must have following details as given below.
