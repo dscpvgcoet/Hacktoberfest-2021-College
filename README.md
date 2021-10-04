@@ -7,13 +7,14 @@ This repository has been created by GDSC PVGCOET for the Hacktoberfest 2021 Open
 ##### 1. Fork this repository 
 Click on fork button in top right corner
 ##### 2. Clone your forked repository
-Go to your repository on Github, and click on the dropdown with green button labelled 'Code'. Copy the URL under HTTP tab. Run following command in your command line, 
+Go to your forked repository on Github, and click on the dropdown with green button labelled 'Code'. Copy the URL under HTTP tab. Run following command in your command line, 
 ```
 git clone <link-you-copied>
 ```
 ##### 3. Make your changes
 Open the code in your editor and make your changes. Once done, commit them to your forked repository. 
-###### 4. Open a pull request from your forked repository to this repository (here)[https://github.com/dscpvgcoet/Hacktoberfest-2021-College/pulls]
+##### 4. Create a PR  
+Open a pull request from your forked repository to this repository [here](https://github.com/dscpvgcoet/Hacktoberfest-2021-College/pulls)
 
 We'll review the changes as well as the validity of your pull request, and will label your PR as `hacktoberfest-accepted` if it is valid. Please refer to the section below to understand the rules of contribution.
 
