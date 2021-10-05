@@ -2,6 +2,8 @@
 
 This repository has been created by GDSC PVGCOET for the Hacktoberfest 2021 Open Source Contributions. It contains all of the assignments performed by students during their college curriculum. 
 
+### Note : Pull requests will be merged after every few hours by maintainers. Kindly do not ask maintainers to merge your PR on urgent basis, please be patient. 
+
 ## Steps to contribute: 
 
 ##### 1. Fork this repository 
