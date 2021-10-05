@@ -1,9 +1,9 @@
 
 /*  
 *   Name : Omkar Gurav
-*   Class : BE IT
+*   Class : BE IT 
 *   Assignment : Assignment 1 : Develop and program in C++ based on number theory such as Chinese remainder.
-*   Date: 05 October 2021
+*   Date: 08 Sept 2021
 */
 
 
