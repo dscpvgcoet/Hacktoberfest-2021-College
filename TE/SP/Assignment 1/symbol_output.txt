@@ -1,0 +1,6 @@
+  SRNO  SYMBOL   LOCATION
+
+   0			A				115
+   1			LAB				615
+   2			B				119
+   3			VAR				135
