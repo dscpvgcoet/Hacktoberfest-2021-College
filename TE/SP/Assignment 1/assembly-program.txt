@@ -1,0 +1,15 @@
+- START 100 -
+- DS 15 - -
+A MOVER AREG, ='2'
+- MOVEM CREG, ='5'
+- MOVEM BREG, ='2'
+- READ LAB - -
+B READ BREG -
+VAR EQU A+20 -
+- LTORG 0 -
+- ORIGIN A+500 -
+LAB MOVEM AREG, ='1'
+- MOVER DREG, ='10'
+- ORIGIN - -
+- LTORG - -
+- END - -
