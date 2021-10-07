@@ -17,7 +17,9 @@ class complex                     //class name "complex"
 {
     public:
     float real,img;        
-    complex(){              //default constructor
+    complex(){
+        real=0;
+        img=0;              //default constructor
     }
 
     complex operator+ (complex);
@@ -55,19 +57,19 @@ complex complex :: operator * (complex obj){ //* operator overloading
 
 int main()
 {
-    complex a,b,c,d;
-    cout<<"\nEnter first complex number\n";
-    cout<<"\nEnter real and imaginary:\t";
+    complex a,b,c,d,e;
+    cout<<"\nEnter first complex number";
+    cout<<"\nEnter real and imaginary : ";
     cin>>a;
-    cout<<"Enter second complex number \n";
-    cout<<"\nEnter real and imaginary:\t";
+    cout<<"\nEnter second complex number";
+    cout<<"\nEnter real and imaginary : ";
     cin>>b;
-    cout<<"\n\tArithmetic operations";
+    cout<<"\n\tArithmetic operations=>";
     c=a+b;
-    cout<<"\n\tAddition =";
+    cout<<"\n\tAddition = ";
     cout<<c;
     d=a*b;
-    cout<<"\n\tMultiplication=";
+    cout<<"\n\tMultiplication = ";
     cout<<d;
     cout<<endl;
     return 0;
