@@ -1,0 +1,316 @@
+/* 
+ADBMS Assignment 1 -
+Name – Pradnya Deshmukh (TEIT)
+Problem Statement - From employee collection in company database, insert at least 10 employee information in employee collection containing eid,ename,disignation,hiredate,salary,hobbies and department. And
+Execute the queries on employee collection.
+NOTE - COMMENTED SECTION IS EITHER A SUB-STATEMENT OR THE OUTPUT
+*/
+
+> db.emp.find().pretty()
+/* {
+ "_id" : ObjectId("612ccc5915c32fa118763041"),
+ "eid" : 1,
+ "ename" : "akash",
+ "designation" : "manager",
+ "hiredate" : ISODate("2015-06-05T00:00:00Z"),
+ "salary" : 40000,
+ "hobby" : [
+ "painting",
+ "writing",
+ "drawing"
+ ],
+ "department" : "hr"
+}
+{
+ "_id" : ObjectId("612ccc5915c32fa118763042"),
+ "eid" : 2,
+ "ename" : "shashank",
+ "designation" : "analyst",
+ "hiredate" : ISODate("2014-03-01T00:00:00Z"),
+ "salary" : 20000,
+ "hobby" : [
+ "reading",
+ "travelling"
+ ],
+ "department" : "engineer"
+}
+{
+ "_id" : ObjectId("612ccc5915c32fa118763043"),
+ "eid" : 3,
+ "ename" : "srushti",
+ "designation" : "developer",
+ "hiredate" : ISODate("2018-08-10T00:00:00Z"),
+ "salary" : 25000,
+ "hobby" : [
+ "Programming",
+ "Sports",
+ "Travelling",
+ "Mountain climbing"
+ ],
+ "department" : "engineer"
+}
+{
+ "_id" : ObjectId("612cce4215c32fa118763044"),
+ "eid" : 4,
+ "ename" : "viraj",
+ "designation" : "salesman",
+ "hiredate" : ISODate("2020-03-09T00:00:00Z"),
+ "salary" : 9000,
+ "hobby" : [
+ "Reading",
+ "painting"
+ ],
+ "department" : "sales"
+}
+{
+ "_id" : ObjectId("612cce4215c32fa118763045"),
+ "eid" : 5,
+ "ename" : "disha",
+ "designation" : "designer",
+ "hiredate" : ISODate("2012-05-12T00:00:00Z"),
+ "salary" : 18000,
+ "hobby" : [
+ "writing",
+ "sports"
+ ],
+ "department" : "production"
+}
+{
+ "_id" : ObjectId("612cd13f15c32fa118763046"),
+ "eid" : 6,
+ "ename" : "tejas",
+ "designation" : "analyst",
+ "hiredate" : ISODate("2014-08-09T00:00:00Z"),
+ "salary" : 20000,
+ "hobby" : [
+ "Sleeping",
+ "Painting"
+ ],
+ "department" : "engineer"
+}
+{
+ "_id" : ObjectId("612cd13f15c32fa118763047"),
+ "eid" : 7,
+ "ename" : "harsh",
+ "designation" : "manager",
+ "hiredate" : ISODate("2011-09-02T00:00:00Z"),
+ "salary" : 40000,
+ "hobby" : [
+ "Watching series",
+ "sports"
+ ],
+ "department" : "hr"
+}
+{
+ "_id" : ObjectId("612cd13f15c32fa118763048"),
+ "eid" : 8,
+ "ename" : "suraj",
+ "designation" : "developer",
+ "hiredate" : ISODate("2015-05-05T00:00:00Z"),
+ "salary" : 30000,
+ "hobby" : [
+ "Sleeping",
+ "watching series"
+ ],
+ "department" : "engineer"
+}
+{
+ "_id" : ObjectId("612cd13f15c32fa118763049"),
+ "eid" : 9,
+ "ename" : "pranav",
+ "designation" : "salesman",
+ "hiredate" : ISODate("2019-09-09T00:00:00Z"),
+ "salary" : 9000,
+ "hobby" : [
+ "Sports",
+ "travelling"
+ ],
+ "department" : "sales"
+}
+{
+ "_id" : ObjectId("612cd13f15c32fa11876304a"),
+ "eid" : 10,
+ "ename" : "nikhil",
+ "designation" : "designer",
+ "hiredate" : ISODate("2015-12-12T00:00:00Z"),
+ "salary" : 25000,
+ "hobby" : [
+ "Listening music",
+ "reading",
+ "painting",
+ "writing"
+ ],
+ "department" : "production"
+} */
+
+// a) List the names of analysts and salesmen.
+
+> db.emp.find({$or:[{designation:"analyst"},{designation:"salesman"}]})
+ 
+/* { "_id" : ObjectId("612ccc5915c32fa118763042"), "eid" : 2, "ename" : "shashank", "designation" 
+: "analyst", "hiredate" : ISODate("2014-03-01T00:00:00Z"), "salary" : 20000, "hobby" : [ 
+"reading", "travelling" ], "department" : "engineer" }
+{ "_id" : ObjectId("612cce4215c32fa118763044"), "eid" : 4, "ename" : "viraj", "designation" : 
+"salesman", "hiredate" : ISODate("2020-03-09T00:00:00Z"), "salary" : 9000, "hobby" : [ 
+"Reading", "painting" ], "department" : "sales" }
+{ "_id" : ObjectId("612cd13f15c32fa118763046"), "eid" : 6, "ename" : "tejas", "designation" : 
+"analyst", "hiredate" : ISODate("2014-08-09T00:00:00Z"), "salary" : 20000, "hobby" : [ 
+"Sleeping", "Painting" ], "department" : "engineer" }
+{ "_id" : ObjectId("612cd13f15c32fa118763049"), "eid" : 9, "ename" : "pranav", "designation" : 
+"salesman", "hiredate" : ISODate("2019-09-09T00:00:00Z"), "salary" : 9000, "hobby" : [ "Sports", 
+"travelling" ], "department" : "sales" } */
+
+// b) List the eid,ename and salary from employee collection.
+
+> db.emp.find({},{_id:0,eid:1,ename:1,salary:1});
+
+/* { "eid" : 1, "ename" : "akash", "salary" : 40000 }
+{ "eid" : 2, "ename" : "shashank", "salary" : 20000 }
+{ "eid" : 3, "ename" : "srushti", "salary" : 25000 }
+{ "eid" : 4, "ename" : "viraj", "salary" : 9000 }
+{ "eid" : 5, "ename" : "disha", "salary" : 18000 }
+{ "eid" : 6, "ename" : "tejas", "salary" : 20000 }
+{ "eid" : 7, "ename" : "harsh", "salary" : 40000 }
+{ "eid" : 8, "ename" : "suraj", "salary" : 30000 }
+{ "eid" : 9, "ename" : "pranav", "salary" : 9000 }
+{ "eid" : 10, "ename" : "nikhil", "salary" : 25000 } */
+
+// c) List names of employees who are not managers.
+
+> db.emp.find({designation:{$ne:"manager"}},{_id:0,eid:1,ename:1});
+
+/* { "eid" : 2, "ename" : "shashank" }
+{ "eid" : 3, "ename" : "srushti" }
+{ "eid" : 4, "ename" : "viraj" }
+{ "eid" : 5, "ename" : "disha" }
+{ "eid" : 6, "ename" : "tejas" }
+{ "eid" : 8, "ename" : "suraj" }
+{ "eid" : 9, "ename" : "pranav" }
+{ "eid" : 10, "ename" : "nikhil" } */
+
+// d) List the names of employees whose employee numbers are 1,3,7,9.
+
+> db.emp.find({eid:{$in:[1,3,5,7,9]}},{_id:0,ename:1,eid:1});
+
+/* { "eid" : 1, "ename" : "akash" }
+{ "eid" : 3, "ename" : "srushti" }
+{ "eid" : 5, "ename" : "disha" }
+{ "eid" : 7, "ename" : "harsh" }
+{ "eid" : 9, "ename" : "pranav" } */
+
+// e) List the names of all employees those having reading as a secound hobby.
+
+db.emp.find({'hobby.1':"reading"},{_id:0,eid:1,ename:1,hobby:1});
+
+/* { "eid" : 10, "ename" : "nikhil", "hobby" : [ "Listening music", "reading", "painting", "writing" ] } */
+
+// g) List the different designations in the company.
+
+db.emp.distinct('designation');
+
+ /* [ "analyst", "designer", "developer", "manager", "salesman" ] */
+
+// h) List the eid,ename,salary of all employees whose salary is less than 10000.
+
+db.emp.find({salary:{$lte:10000}},{_id:0,eid:1,ename:1,salary:1});
+
+/* { "eid" : 4, "ename" : "viraj", "salary" : 9000 }
+{ "eid" : 9, "ename" : "pranav", "salary" : 9000 } */
+
+// i) List the name and designation of the employee who works in production department.
+
+db.emp.find({department:"production"},{_id:0,eid:1,ename:1,department:1});
+
+/* { "eid" : 5, "ename" : "disha", "department" : "production" }
+{ "eid" : 10, "ename" : "nikhil", "department" : "production" }*/
+
+// j) List the all employees whose name start with "A" letter.
+
+> db.emp.find({ename:/^a/},{_id:0,eid:1,ename:1});
+
+// { "eid" : 1, "ename" : "akash" }
+
+// k) List the all employees whose name containing "sh" string.
+
+db.emp.find({ename:/sh/},{_id:0,eid:1,ename:1});
+
+/* { "eid" : 1, "ename" : "akash" }
+{ "eid" : 2, "ename" : "shashank" }
+{ "eid" : 3, "ename" : "srushti" }
+{ "eid" : 5, "ename" : "disha" }
+{ "eid" : 7, "ename" : "harsh" } */
+
+// l) List the all employees whose names either start or end with “S”.
+
+> db.emp.find({$or:[{ename:/^s/},{ename:/s$/}]},{_id:0,eid:1,ename:1});
+
+/* { "eid" : 2, "ename" : "shashank" }
+{ "eid" : 3, "ename" : "srushti" }
+{ "eid" : 6, "ename" : "tejas" }
+{ "eid" : 8, "ename" : "suraj" } */
+
+// m) List the names of employees whose department is not HR.
+
+db.emp.find({department:{$ne:"hr"}},{_id:0,eid:1,ename:1,department:1});
+
+/* { "eid" : 2, "ename" : "shashank", "department" : "engineer" }
+{ "eid" : 3, "ename" : "srushti", "department" : "engineer" }
+{ "eid" : 4, "ename" : "viraj", "department" : "sales" }
+{ "eid" : 5, "ename" : "disha", "department" : "production" }
+{ "eid" : 6, "ename" : "tejas", "department" : "engineer" }
+{ "eid" : 8, "ename" : "suraj", "department" : "engineer" }
+{ "eid" : 9, "ename" : "pranav", "department" : "sales" }
+{ "eid" : 10, "ename" : "nikhil", "department" : "production" } */
+
+// n) List the number of employees working in sales department.
+
+db.emp.count({department:"sales"});
+
+// 2
+
+// o) List the number of designations available in the EMP collections.
+
+> db.emp.aggregate([{$count:"designation"}]);
+{ "designation" : 10 }
+
+// p) List the eid,ename,salary of all employees whose salary in between 10000 to 20000.
+
+> db.emp.find({'salary':{$gte:10000,$lte:20000}},{_id:0,eid:1,ename:1,salary:1});
+
+/* { "eid" : 2, "ename" : "shashank", "salary" : 20000 }
+{ "eid" : 5, "ename" : "disha", "salary" : 18000 }
+{ "eid" : 6, "ename" : "tejas", "salary" : 20000 } */
+
+// q) List the eid,ename of all employees whose salary is gretter than or equal to 15000.
+
+> db.emp.find({'salary':{$gte:15000}},{_id:0,eid:1,ename:1,salary:1});
+
+/* { "eid" : 1, "ename" : "akash", "salary" : 40000 }
+{ "eid" : 2, "ename" : "shashank", "salary" : 20000 }
+{ "eid" : 3, "ename" : "srushti", "salary" : 25000 }
+{ "eid" : 5, "ename" : "disha", "salary" : 18000 }
+{ "eid" : 6, "ename" : "tejas", "salary" : 20000 }
+{ "eid" : 7, "ename" : "harsh", "salary" : 40000 }
+{ "eid" : 8, "ename" : "suraj", "salary" : 30000 }
+{ "eid" : 10, "ename" : "nikhil", "salary" : 25000 } */
+
+// r) List details of employees whose department is Sales and salary is 10000.
+
+db.emp.find({department:"sales",salary:10000},{_id:0});
+
+// none
+
+// s) List the names of employees those having reading and painting hobbies.
+
+> db.emp.find({hobby:{$in:["reading","painting"]}},{_id:0,ename:1,eid:1,hobby:1});
+
+/* { "eid" : 1, "ename" : "akash", "hobby" : [ "painting", "writing", "drawing" ] }
+{ "eid" : 2, "ename" : "shashank", "hobby" : [ "reading", "travelling" ] }
+{ "eid" : 4, "ename" : "viraj", "hobby" : [ "Reading", "painting" ] }
+{ "eid" : 10, "ename" : "nikhil", "hobby" : [ "Listening music", "reading", "painting", "writing" ] } */
+
+// u) List the names of all employees those having three different hobbies.
+
+> db.emp.find({hobby:{$size:3}},{_id:0,eid:1,ename:1,hobby:1});
+
+/* { "eid" : 1, "ename" : "akash", "hobby" : [ "painting", "writing", "drawing" ] } */
