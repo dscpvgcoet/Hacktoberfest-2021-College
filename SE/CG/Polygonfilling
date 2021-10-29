@@ -1,5 +1,6 @@
 /*To Implement the following polygon filling methods : i) Flood fill / Seed fill ii) Boundary fill ; using
-mouse click, keyboard interface and menu driven programming*/
+mouse click, keyboard interface and menu driven programming
+Name:Chaitanya Giram*/
 #include<GL/glut.h>
 #include<math.h>
 #include<stdlib.h>
