@@ -1,0 +1,468 @@
+/*Name :Chaitanya Santosh Giram 
+Class:TE IT
+Problem Statement:1. Create a database with suitable example using MongoDB and implement
+ Inserting and saving document (batch insert, insert validation)
+ Removing document
+ Updating document (document replacement, using modifiers, upserts, updating multiple
+documents, returning updated documents)
+ Execute at least 10 queries on any suitable MongoDB database that demonstrates following:
+Find and findOne (specific values)
+Query criteria (Query conditionals, OR queries, $not, Conditional semantics)
+Type-specific queries (Null, Regular expression, Querying arrays)
+$ where queries
+Cursors (Limit, skip, sort, advanced query options)*/
+
+> show dbs
+Employee  0.000GB
+admin     0.000GB
+config    0.000GB
+local     0.000GB
+mydb      0.000GB
+> use mydb
+switched to db mydb
+> db.createCollection('Employee')
+{ "ok" : 1 }
+> show collections
+Dept
+Employee
+Fruit
+Fruits
+collction
+collection
+emp
+emps
+> use Employee
+switched to db Employee
+> db.Employee.find().pretty()
+{
+        "_id" : 1,
+        "ename" : "Amit",
+        "design" : "Analyst",
+        "hdate" : "24-8-2019",
+        "salary" : 5000,
+        "hobbies" : "Coding",
+        "dept" : "Software"
+}
+{
+        "_id" : 2,
+        "ename" : "Srushti",
+        "design" : "Manager",
+        "hdate" : "25-10-2020",
+        "salary" : 7000,
+        "hobbies" : [
+                "Writing",
+                "Reading"
+        ],
+        "dept" : "HR"
+}
+{
+        "_id" : 3,
+        "ename" : "Samar",
+        "design" : "Coder",
+        "hdate" : "22-8-2015",
+        "salary" : 9000,
+        "hobbies" : "gaming",
+        "dept" : "Programming"
+}
+{
+        "_id" : 4,
+        "ename" : "Abhay",
+        "design" : "Salesman",
+        "hdate" : "20-10-2015",
+        "salary" : 4000,
+        "hobbies" : [
+                "Writing",
+                "Cricket"
+        ],
+        "dept" : "Sales"
+}
+{
+        "_id" : 5,
+        "ename" : "Shree",
+        "design" : "Developer",
+        "hdate" : "12-8-2016",
+        "salary" : 10000,
+        "hobbies" : [
+                "gaming",
+                "Cricket",
+                "Trekking"
+        ],
+        "dept" : "Testing"
+}
+{
+        "_id" : 6,
+        "ename" : "Jay",
+        "design" : "Manager",
+        "hdate" : "10-09-2021",
+        "salary" : 11000,
+        "hobbies" : [
+                "Blogging",
+                "Watching"
+        ],
+        "dept" : "HR"
+}
+{
+        "_id" : 7,
+        "ename" : "Advait",
+        "design" : "Salesman",
+        "hdate" : "29-8-2021",
+        "salary" : 4000,
+        "hobbies" : "Watching",
+        "dept" : "Sales"
+}
+{
+        "_id" : 8,
+        "ename" : "Sneha",
+        "design" : "Developer",
+        "hdate" : "02-11-2020",
+        "salary" : 10000,
+        "hobbies" : [
+                "Writing",
+                "Watching"
+        ],
+        "dept" : "Testing"
+}
+{
+        "_id" : 9,
+        "ename" : "Santosh",
+        "design" : "Coder",
+        "hdate" : "23-2-2012",
+        "salary" : 10000,
+        "hobbies" : "Trekking",
+        "dept" : "Programmer"
+}
+{
+        "_id" : 10,
+        "ename" : "Shama",
+        "design" : "Salesman",
+        "hdate" : "12-11-2012",
+        "salary" : 4000,
+        "hobbies" : [
+                "Reading",
+                "Travelling"
+        ],
+        "dept" : "Sales"
+}
+> db.Employee.remove({_id:8})
+WriteResult({ "nRemoved" : 1 })
+> db.Employee.find().pretty()
+{
+        "_id" : 1,
+        "ename" : "Amit",
+        "design" : "Analyst",
+        "hdate" : "24-8-2019",
+        "salary" : 5000,
+        "hobbies" : "Coding",
+        "dept" : "Software"
+}
+{
+        "_id" : 2,
+        "ename" : "Srushti",
+        "design" : "Manager",
+        "hdate" : "25-10-2020",
+        "salary" : 7000,
+        "hobbies" : [
+                "Writing",
+                "Reading"
+        ],
+        "dept" : "HR"
+}
+{
+        "_id" : 3,
+        "ename" : "Samar",
+        "design" : "Coder",
+        "hdate" : "22-8-2015",
+        "salary" : 9000,
+        "hobbies" : "gaming",
+        "dept" : "Programming"
+}
+{
+        "_id" : 4,
+        "ename" : "Abhay",
+        "design" : "Salesman",
+        "hdate" : "20-10-2015",
+        "salary" : 4000,
+        "hobbies" : [
+                "Writing",
+                "Cricket"
+        ],
+        "dept" : "Sales"
+}
+{
+        "_id" : 5,
+        "ename" : "Shree",
+        "design" : "Developer",
+        "hdate" : "12-8-2016",
+        "salary" : 10000,
+        "hobbies" : [
+                "gaming",
+                "Cricket",
+                "Trekking"
+        ],
+        "dept" : "Testing"
+}
+{
+        "_id" : 6,
+        "ename" : "Jay",
+        "design" : "Manager",
+        "hdate" : "10-09-2021",
+        "salary" : 11000,
+        "hobbies" : [
+                "Blogging",
+                "Watching"
+        ],
+        "dept" : "HR"
+}
+{
+        "_id" : 7,
+        "ename" : "Advait",
+        "design" : "Salesman",
+        "hdate" : "29-8-2021",
+        "salary" : 4000,
+        "hobbies" : "Watching",
+        "dept" : "Sales"
+}
+{
+        "_id" : 9,
+        "ename" : "Santosh",
+        "design" : "Coder",
+        "hdate" : "23-2-2012",
+        "salary" : 10000,
+        "hobbies" : "Trekking",
+        "dept" : "Programmer"
+}
+{
+        "_id" : 10,
+        "ename" : "Shama",
+        "design" : "Salesman",
+        "hdate" : "12-11-2012",
+        "salary" : 4000,
+        "hobbies" : [
+                "Reading",
+                "Travelling"
+        ],
+        "dept" : "Sales"
+}
+> db.Employee.findOneAndUpdate({ename:'Shama'},{$set:{design:'Coder'}})
+{
+        "_id" : 10,
+        "ename" : "Shama",
+        "design" : "Salesman",
+        "hdate" : "12-11-2012",
+        "salary" : 4000,
+        "hobbies" : [
+                "Reading",
+                "Travelling"
+        ],
+        "dept" : "Sales"
+}
+> db.Employee.find().pretty()
+{
+        "_id" : 1,
+        "ename" : "Amit",
+        "design" : "Analyst",
+        "hdate" : "24-8-2019",
+        "salary" : 5000,
+        "hobbies" : "Coding",
+        "dept" : "Software"
+}
+{
+        "_id" : 2,
+        "ename" : "Srushti",
+        "design" : "Manager",
+        "hdate" : "25-10-2020",
+        "salary" : 7000,
+        "hobbies" : [
+                "Writing",
+                "Reading"
+        ],
+        "dept" : "HR"
+}
+{
+        "_id" : 3,
+        "ename" : "Samar",
+        "design" : "Coder",
+        "hdate" : "22-8-2015",
+        "salary" : 9000,
+        "hobbies" : "gaming",
+        "dept" : "Programming"
+}
+{
+        "_id" : 4,
+        "ename" : "Abhay",
+        "design" : "Salesman",
+        "hdate" : "20-10-2015",
+        "salary" : 4000,
+        "hobbies" : [
+                "Writing",
+                "Cricket"
+        ],
+        "dept" : "Sales"
+}
+{
+        "_id" : 5,
+        "ename" : "Shree",
+        "design" : "Developer",
+        "hdate" : "12-8-2016",
+        "salary" : 10000,
+        "hobbies" : [
+                "gaming",
+                "Cricket",
+                "Trekking"
+        ],
+        "dept" : "Testing"
+}
+{
+        "_id" : 6,
+        "ename" : "Jay",
+        "design" : "Manager",
+        "hdate" : "10-09-2021",
+        "salary" : 11000,
+        "hobbies" : [
+                "Blogging",
+                "Watching"
+        ],
+        "dept" : "HR"
+}
+{
+        "_id" : 7,
+        "ename" : "Advait",
+        "design" : "Salesman",
+        "hdate" : "29-8-2021",
+        "salary" : 4000,
+        "hobbies" : "Watching",
+        "dept" : "Sales"
+}
+{
+        "_id" : 9,
+        "ename" : "Santosh",
+        "design" : "Coder",
+        "hdate" : "23-2-2012",
+        "salary" : 10000,
+        "hobbies" : "Trekking",
+        "dept" : "Programmer"
+}
+{
+        "_id" : 10,
+        "ename" : "Shama",
+        "design" : "Coder",
+        "hdate" : "12-11-2012",
+        "salary" : 4000,
+        "hobbies" : [
+                "Reading",
+                "Travelling"
+        ],
+        "dept" : "Sales"
+}
+> db.Employee.find({design:{$not:{$eq:"Manager"}}})
+{ "_id" : 1, "ename" : "Amit", "design" : "Analyst", "hdate" : "24-8-2019", "salary" : 5000, "hobbies" : "Coding", "dept" : "Software" }
+{ "_id" : 3, "ename" : "Samar", "design" : "Coder", "hdate" : "22-8-2015", "salary" : 9000, "hobbies" : "gaming", "dept" : "Programming" }
+{ "_id" : 4, "ename" : "Abhay", "design" : "Salesman", "hdate" : "20-10-2015", "salary" : 4000, "hobbies" : [ "Writing", "Cricket" ], "dept" : "Sales" }
+{ "_id" : 5, "ename" : "Shree", "design" : "Developer", "hdate" : "12-8-2016", "salary" : 10000, "hobbies" : [ "gaming", "Cricket", "Trekking" ], "dept" : "Testing" }
+{ "_id" : 7, "ename" : "Advait", "design" : "Salesman", "hdate" : "29-8-2021", "salary" : 4000, "hobbies" : "Watching", "dept" : "Sales" }
+{ "_id" : 9, "ename" : "Santosh", "design" : "Coder", "hdate" : "23-2-2012", "salary" : 10000, "hobbies" : "Trekking", "dept" : "Programmer" }
+{ "_id" : 10, "ename" : "Shama", "design" : "Coder", "hdate" : "12-11-2012", "salary" : 4000, "hobbies" : [ "Reading", "Travelling" ], "dept" : "Sales" }
+> db.Employee.find({salary:{$gt:4000}})
+{ "_id" : 1, "ename" : "Amit", "design" : "Analyst", "hdate" : "24-8-2019", "salary" : 5000, "hobbies" : "Coding", "dept" : "Software" }
+{ "_id" : 2, "ename" : "Srushti", "design" : "Manager", "hdate" : "25-10-2020", "salary" : 7000, "hobbies" : [ "Writing", "Reading" ], "dept" : "HR" }
+{ "_id" : 3, "ename" : "Samar", "design" : "Coder", "hdate" : "22-8-2015", "salary" : 9000, "hobbies" : "gaming", "dept" : "Programming" }
+{ "_id" : 5, "ename" : "Shree", "design" : "Developer", "hdate" : "12-8-2016", "salary" : 10000, "hobbies" : [ "gaming", "Cricket", "Trekking" ], "dept" : "Testing" }
+{ "_id" : 6, "ename" : "Jay", "design" : "Manager", "hdate" : "10-09-2021", "salary" : 11000, "hobbies" : [ "Blogging", "Watching" ], "dept" : "HR" }
+{ "_id" : 9, "ename" : "Santosh", "design" : "Coder", "hdate" : "23-2-2012", "salary" : 10000, "hobbies" : "Trekking", "dept" : "Programmer" }
+> db.Employee.find({salary:{$lt:4000}})
+> db.Employee.find({salary:{$eq:4000}})
+{ "_id" : 4, "ename" : "Abhay", "design" : "Salesman", "hdate" : "20-10-2015", "salary" : 4000, "hobbies" : [ "Writing", "Cricket" ], "dept" : "Sales" }
+{ "_id" : 7, "ename" : "Advait", "design" : "Salesman", "hdate" : "29-8-2021", "salary" : 4000, "hobbies" : "Watching", "dept" : "Sales" }
+{ "_id" : 10, "ename" : "Shama", "design" : "Coder", "hdate" : "12-11-2012", "salary" : 4000, "hobbies" : [ "Reading", "Travelling" ], "dept" : "Sales" }
+
+
+"Output"
+
+a)
+>  db.Employee.find({$or:[{design:"Analyst"},{design:"Salesman"}]},{ename:1})
+{ "_id" : 1, "ename" : "Amit" }
+{ "_id" : 4, "ename" : "Abhay" }
+{ "_id" : 7, "ename" : "Advait" }
+b)
+> db.Employee.find({},{_id:1,ename:1,salary:1})
+{ "_id" : 1, "ename" : "Amit", "salary" : 5000 }
+{ "_id" : 2, "ename" : "Srushti", "salary" : 7000 }
+{ "_id" : 3, "ename" : "Samar", "salary" : 9000 }
+{ "_id" : 4, "ename" : "Abhay", "salary" : 4000 }
+{ "_id" : 5, "ename" : "Shree", "salary" : 10000 }
+{ "_id" : 6, "ename" : "Jay", "salary" : 11000 }
+{ "_id" : 7, "ename" : "Advait", "salary" : 4000 }
+{ "_id" : 9, "ename" : "Santosh", "salary" : 10000 }
+{ "_id" : 10, "ename" : "Shama", "salary" : 4000 }
+
+c)
+>  db.Employee.find({design:{$ne:"Manager"}},{_id:1,ename:1})
+{ "_id" : 1, "ename" : "Amit" }
+{ "_id" : 3, "ename" : "Samar" }
+{ "_id" : 4, "ename" : "Abhay" }
+{ "_id" : 5, "ename" : "Shree" }
+{ "_id" : 7, "ename" : "Advait" }
+{ "_id" : 9, "ename" : "Santosh" }
+{ "_id" : 10, "ename" : "Shama" }
+d)
+> db.Employee.find({_id:{$in:[1,3,7,9]}},{_id:0,ename:1})
+{ "ename" : "Amit" }
+{ "ename" : "Samar" }
+{ "ename" : "Advait" }
+{ "ename" : "Santosh" }
+
+e)
+> db.Employee.find({'hobbies.1':"Travelling"},{_id:0,ename:1,hobbies:1});
+{ "ename" : "Shama", "hobbies" : [ "Reading", "Travelling" ] }
+
+f)
+
+g)
+> db.Employee.distinct('design');
+[ "Analyst", "Coder", "Developer", "Manager", "Salesman" ]
+
+h)
+> db.Employee.find({Salary:{$lte:10000}},{_id:0,EId:1,EName:1,Salary:1});
+{ "EId" : 2, "EName" : "Archit", "Salary" : 8000 }
+{ "EId" : 3, "EName" : "Anish", "Salary" : 10000 }
+{ "EId" : 4, "EName" : "Akhilesh", "Salary" : 10000 }
+{ "EId" : 10, "EName" : "Rekha", "Salary" : 7000 }
+
+i)
+> db.Employee.find({dept:"Production"},{_id:1,ename:1,dept:1});
+No records
+
+j)
+> db.Employee.find({ename:/^A/},{_id:1,ename:1})
+{"_id" : 1, "ename" : "Amit" }
+{"_id" : 4, "ename" : "Abhay" }
+{"_id" : 7, "ename" : "Advait" }
+
+k)
+> db.Employee.find({ename:/sh/},{_id:1,ename:1})
+{ "_id" : 2, "ename" : "Srushti" }
+{ "_id" : 9, "ename" : "Santosh" }
+m)
+> db.Employee.find({dept:{$ne:"HR"}},{_id:1,ename:1,dept:1});
+{ "_id" : 1, "ename" : "Amit", "dept" : "Software" }
+{ "_id" : 3, "ename" : "Samar", "dept" : "Programming" }
+{ "_id" : 4, "ename" : "Abhay", "dept" : "Sales" }
+{ "_id" : 5, "ename" : "Shree", "dept" : "Testing" }
+{ "_id" : 7, "ename" : "Advait", "dept" : "Sales" }
+{ "_id" : 9, "ename" : "Santosh", "dept" : "Programmer" }
+{ "_id" : 10, "ename" : "Shama", "dept" : "Sales" }
+
+n)
+> db.Employee.count({dept:"Sales"});
+3
+
+o)
+> db.Employee.aggregate([{$count:"design"}]);
+{ "design" : 9 }
+
+p)
+> db.Employee.find({'salary':{$gte:10000,$lte:20000}},{_id:1,ename:1,salary:1})
+{ "_id" : 5, "ename" : "Shree", "salary" : 10000 }
+{ "_id" : 6, "ename" : "Jay", "salary" : 11000 }
+{ "_id" : 9, "ename" : "Santosh", "salary" : 10000 }
+
